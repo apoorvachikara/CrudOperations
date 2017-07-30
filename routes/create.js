@@ -79,8 +79,10 @@ route.post('/upload', function(req, res){
         }
         else{
              this.path = req.file.path;
-             profile.Photo = this.path;
-             
+             var x = this.path.split('\\');
+             profile.Photo = x[1];
+            
+
              db.collection('profile').save(profile, function(err, data){
 
                 if (err)
